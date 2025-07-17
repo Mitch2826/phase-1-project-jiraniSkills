@@ -1,0 +1,142 @@
+{
+  "artisans": [
+    {
+      "id": "1",
+      "name": "John Mwangi",
+      "skill": "Carpentry",
+      "location": "Nairobi",
+      "phone": "+254 712 345 678",
+      "email": "john.mwangi@email.com",
+      "experience": 8,
+      "description": "Specializes in custom furniture, kitchen cabinets, and home renovations. Quality craftsmanship guaranteed.",
+      "upvotes": 15,
+      "dateAdded": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Mary Wanjiku",
+      "skill": "Tailoring",
+      "location": "Nairobi",
+      "phone": "+254 722 456 789",
+      "email": "mary.wanjiku@gmail.com",
+      "experience": 12,
+      "description": "Expert in traditional African wear, wedding dresses, and modern clothing alterations.",
+      "upvotes": 24,
+      "dateAdded": "2024-01-20T14:20:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Peter Otieno",
+      "skill": "Plumbing",
+      "location": "Kisumu",
+      "phone": "+254 733 567 890",
+      "email": "",
+      "experience": 6,
+      "description": "Residential and commercial plumbing services. Emergency repairs and new installations.",
+      "upvotes": 9,
+      "dateAdded": "2024-02-01T09:15:00Z"
+    },
+    {
+      "id": "4",
+      "name": "Grace Mutua",
+      "skill": "Electrical",
+      "location": "Mombasa",
+      "phone": "+254 744 678 901",
+      "email": "grace.mutua@yahoo.com",
+      "experience": 10,
+      "description": "Licensed electrician specializing in house wiring, solar installations, and electrical repairs.",
+      "upvotes": 20,
+      "dateAdded": "2024-02-10T16:45:00Z"
+    },
+    {
+      "id": "5",
+      "name": "David Kiprop",
+      "skill": "Painting",
+      "location": "Eldoret",
+      "phone": "+254 755 789 012",
+      "email": "david.kiprop@gmail.com",
+      "experience": 5,
+      "description": "Interior and exterior painting, decorative finishes, and wall murals for homes and offices.",
+      "upvotes": 13,
+      "dateAdded": "2024-02-15T11:30:00Z"
+    },
+    {
+      "id": "6",
+      "name": "Sarah Nyong'o",
+      "skill": "Masonry",
+      "location": "Nakuru",
+      "phone": "+254 766 890 123",
+      "email": "",
+      "experience": 15,
+      "description": "Expert in stonework, brickwork, and concrete construction. Builds durable structures.",
+      "upvotes": 28,
+      "dateAdded": "2024-02-20T08:00:00Z"
+    },
+    {
+      "id": "7",
+      "name": "James Ochieng",
+      "skill": "Welding",
+      "location": "Nairobi",
+      "phone": "+254 777 901 234",
+      "email": "james.ochieng@email.com",
+      "experience": 9,
+      "description": "Metal fabrication, gate installation, and repair services. Quality welding for all metal work.",
+      "upvotes": 14,
+      "dateAdded": "2024-02-25T13:20:00Z"
+    },
+    {
+      "id": "8",
+      "name": "Ruth Akinyi",
+      "skill": "Mechanic",
+      "location": "Mombasa",
+      "phone": "+254 788 012 345",
+      "email": "ruth.akinyi@gmail.com",
+      "experience": 7,
+      "description": "Automotive repairs, engine diagnostics, and maintenance services. Certified mechanic.",
+      "upvotes": 16,
+      "dateAdded": "2024-03-01T10:10:00Z"
+    },
+    {
+      "id": "c52b",
+      "name": "Agnes Awour",
+      "skill": "Tailoring",
+      "location": "Kisumu",
+      "phone": "+254 718218266",
+      "email": "",
+      "experience": 3,
+      "description": "Custom tailoring for women's wear, bridal and formal wear",
+      "upvotes": 4,
+      "dateAdded": "2025-07-15T19:55:00.775Z"
+    },
+    {
+      "id": "f39b",
+      "name": "Daniel Maina",
+      "skill": "Electrical",
+      "location": "Kisumu",
+      "phone": "+254 701112233",
+      "email": "",
+      "experience": 10,
+      "description": "Certified electrician handling, residential wiring, repairs and installations. Reliable and safety-focused.",
+      "upvotes": 1,
+      "dateAdded": "2025-07-16T16:38:12.742Z"
+    },
+    {
+      "id": "9c9c",
+      "name": "Chebet Naomi",
+      "skill": "Plumbing",
+      "location": "Nairobi",
+      "phone": "0742247534",
+      "email": "",
+      "experience": 4,
+      "description": "Contact me for plumbing services",
+      "upvotes": 1,
+      "dateAdded": "2025-07-16T17:17:15.446Z"
+    }
+  ],
+  "favorites": [
+    {
+      "id": "0e16",
+      "artisanId": "3"
+    }
+  ]
+}

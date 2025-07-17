@@ -1,0 +1,21 @@
+{
+  "name": "phase-1-project-jiraniskills",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mitch2826/phase-1-project-jiraniSkills.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Mitch2826/phase-1-project-jiraniSkills/issues"
+  },
+  "homepage": "https://github.com/Mitch2826/phase-1-project-jiraniSkills#readme"
+}

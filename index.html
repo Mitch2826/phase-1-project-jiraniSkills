@@ -1,0 +1,135 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap">
+    <title>JiraniSkills</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JiraniSkills</h1>
+            <p class="subtitle">Connect with talented local artisans in Kenya</p>
+        </header>
+
+        <!--search bar-->
+        <div class="search-bar">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search artisans by name">
+                <select class="filter-select" id="skillFilter">
+                    <option value="">All Skills</option>
+                    <option value="Carpentry">Carpentry</option>
+                    <option value="Plumbing">Plumbing</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Painting">Painting</option>
+                    <option value="Tailoring">Tailoring</option>
+                    <option value="Welding">Welding</option>
+                    <option value="Masonry">Masonry</option>
+                    <option value="Mechanic">Mechanic</option>
+                </select>
+                <select class="filter-select" id="locationFilter">
+                    <option value="">All Locations</option>
+                    <option value="Nairobi">Nairobi</option>
+                    <option value="Mombasa">Mombasa</option>
+                    <option value="Kisumu">Kisumu</option>
+                    <option value="Nakuru">Nakuru</option>
+                    <option value="Eldoret">Eldoret</option>
+                </select>
+            </div>
+
+        <!--tabs-->
+        <div class="tabs">
+            <button class="tab active" data-tab="browse">Browse Artisans</button>
+            <button class="tab" data-tab="register">Add New Artisan</button>
+            <button class="tab" data-tab="favorites">My Favorites</button>
+        </div>
+        <!--browse tab-->
+        <div class="tab-content active" id="browse">
+            <div class="loading" id="loading">Loading artisans...</div>
+            <div class="artisan-grid" id="artisanGrid"></div>
+            <div class="no-results" id="noResults" style="display: none;">
+                No artisans found matching your search criteria.
+            </div>
+        </div>
+        <!--register tab-->
+        <div class="tab-content" id="register">
+            <div class="form-container">
+                <h2 style="margin-bottom: 25px; font-family: 'Merriweather', serif; color: #6B5F5F; text-align: center;">Register New Artisan</h2>
+                
+                <div id="successMessage" class="success-message" style="display: none;"></div>
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                <!--artisan registration form-->
+                <form id="artisanForm">
+                    <div class="form-group">
+                        <label for="artisanName">Full Name *</label>
+                        <input type="text" id="artisanName" name="name" required>
+                    </div>
+                        <!--skills dropdown-->
+                    <div class="form-group">
+                        <label for="artisanSkill">Primary Skill *</label>
+                        <select id="artisanSkill" name="skill" required>
+                            <option value="">Select a skill</option>
+                            <option value="Carpentry">Carpentry</option>
+                            <option value="Plumbing">Plumbing</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Painting">Painting</option>
+                            <option value="Tailoring">Tailoring</option>
+                            <option value="Welding">Welding</option>
+                            <option value="Masonry">Masonry</option>
+                            <option value="Mechanic">Mechanic</option>
+                        </select>
+                    </div>
+                    
+                    <!--location dropdown-->
+                    <div class="form-group">
+                        <label for="artisanLocation">Location *</label>
+                        <select id="artisanLocation" name="location" required>
+                            <option value="">Select location</option>
+                            <option value="Nairobi">Nairobi</option>
+                            <option value="Mombasa">Mombasa</option>
+                            <option value="Kisumu">Kisumu</option>
+                            <option value="Nakuru">Nakuru</option>
+                            <option value="Eldoret">Eldoret</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artisanPhone">Phone Number *</label>
+                        <input type="tel" id="artisanPhone" name="phone" placeholder="e.g., +254 700 123 456" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artisanEmail">Email (Optional)</label>
+                        <input type="email" id="artisanEmail" name="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artisanExperience">Years of Experience *</label>
+                        <input type="number" id="artisanExperience" name="experience" min="0" max="50" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artisanDescription">Description/Specialization</label>
+                        <textarea id="artisanDescription" name="description" placeholder="Brief description of services and specializations..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Register Artisan</button>
+                </form>
+            </div>
+        </div>
+
+        <!--favorites tab-->
+        <div class="tab-content" id="favorites">
+            <div class="form-container">
+                <h2 style="margin-bottom: 25px; font-family: 'Merriweather', serif; color: #6B5F5F; text-align: center;">My Favorite Artisans</h2>
+                <div class="artisan-grid" id="favoritesGrid"></div>
+                <div class="no-results" id="noFavorites" style="display: none;">
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
