@@ -9,11 +9,6 @@ JiraniSkills is a web application that allows users to connect with local artisa
 - Register a new artisan using a form
 - Remove an artisan from favorites
 
-## Technologies used
-- **HTML/CSS** - UI and layout
-- **JavaScript** - DOM manipulation, event handling
-- **json-server** - Backend for simulating server behaviour
-
 ## How to run this project
 ### 1. Clone the repository
 Clone the repository and navigate to the project directory
