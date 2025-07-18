@@ -15,7 +15,6 @@ const errorMessage = document.getElementById('errorMessage');
 const favoritesGrid = document.getElementById('favoritesGrid');
 const noFavorites = document.getElementById('noFavorites');
 
-//initialize app when the page loads
 document.addEventListener('DOMContentLoaded', function () {
     loadArtisans();
     loadFavorites();
@@ -44,7 +43,7 @@ function setupEventListeners() {
 async function loadArtisans() {
     try {
         loading.style.display = "block";
-        const response = await fetch(API_URL); //dend GET request to endpoint
+        const response = await fetch(API_URL); //send GET request to endpoint
 
         if(!response.ok) throw new Error("Failed to fetch artisans");
         artisans = await response.json(); //store response in artisans
@@ -63,25 +62,26 @@ async function loadArtisans() {
 async function addArtisan(artisanData) {
     try {
         const response = await fetch(API_URL, {
-            method: 'POST',
+            method: 'POST', //request for sending new data
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(artisanData)
+            body: JSON.stringify(artisanData) //convert artisan data into a JSON string
         });
 
         if (!response.ok) throw new Error('Failed to add artisan');
 
-        const newArtisan = await response.json();
-        artisans.push(newArtisan);
+        const newArtisan = await response.json(); //wait for server to respond with added artisan
+        artisans.push(newArtisan); //add new artisan to artisans array
 
-        displayArtisans(artisans);
+        displayArtisans(artisans);//renders all artisans again
 
         showSuccess('Artisan registered successfully!');
 
-        artisanForm.reset();
+        artisanForm.reset(); //clear form fields
+
         return newArtisan;
     } catch (error) {
-        console.error('Error adding artisan:', error);
-        showError('Failed to register artisan.');
+        console.error('Error adding artisan:', error); //logged on console
+        showError('Failed to register artisan.'); 
     }
 }
 
@@ -89,7 +89,7 @@ window.upvoteArtisan = upvoteArtisan;
 
 //update upvotes
 async function updateArtisan(id, updates) {
-    const response = await fetch(`${API_URL}/${id}`, {
+    const response = await fetch(`${API_URL}/${id}`, { 
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updates)
@@ -137,10 +137,10 @@ async function upvoteArtisan(id) {
     }
 }
 
-
-window.toggleFavorite = toggleFavorite;
+window.toggleFavorite = toggleFavorite; //makes the toggle function accessible globally
 // display artisans
 function displayArtisans(artisansToShow) {
+    //if the list is empty shows no results
     if (artisansToShow.length === 0) {
         artisanGrid.innerHTML = '';
         noResults.style.display = 'block';
@@ -149,8 +149,8 @@ function displayArtisans(artisansToShow) {
 
     noResults.style.display = 'none';
 
-    artisanGrid.innerHTML = artisansToShow.map(artisan => `
-        <div class="artisan-card">
+    artisanGrid.innerHTML = artisansToShow.map(artisan => 
+        `<div class="artisan-card">
             <div class="artisan-header">
                 <div>
                     <div class="artisan-name">${artisan.name}</div>
@@ -158,6 +158,7 @@ function displayArtisans(artisansToShow) {
                     <div class="artisan-location">📍 ${artisan.location}</div>
                 </div>
             </div>
+
             <div class="artisan-contact">
                 📞 ${artisan.phone}
                 ${artisan.email ? `<br>📧 ${artisan.email}` : ''}
@@ -166,25 +167,28 @@ function displayArtisans(artisansToShow) {
                 📅 ${artisan.experience} years experience
             </div>
             ${artisan.description ? `<div class="artisan-contact">${artisan.description}</div>` : ''}
+
             <div class="artisan-actions">
                 <button class="upvote-btn" onclick="upvoteArtisan('${artisan.id}')">
                     👍 ${artisan.upvotes || 0}
                 </button>
+
                 <button class="favorite-btn ${isFavorited(artisan.id) ? 'favorited' : ''}" 
                         onclick="toggleFavorite('${artisan.id}')">
                     ${isFavorited(artisan.id) ? '❤️ Remove' : '🤍 Favorite'}
                 </button>
+
             </div>
-        </div>
-    `).join('');
+        </div>`).join(''); //convert list of artisans into one string of html
 }
 
 //search filters
 function filterArtisans() {
+    //read the values from the inputs
     const searchTerm = searchInput.value.toLowerCase();
     const skillValue = skillFilter.value;
     const locationValue = locationFilter.value;
-
+    //looks for a match for the search value
     const filtered = artisans.filter(artisan => {
         const matchesSearch = artisan.name.toLowerCase().includes(searchTerm) ||
             artisan.skill.toLowerCase().includes(searchTerm) ||
@@ -193,12 +197,13 @@ function filterArtisans() {
         const matchesSkill = !skillValue || artisan.skill === skillValue;
         const matchesLocation = !locationValue || artisan.location === locationValue;
 
-        return matchesSearch && matchesSkill && matchesLocation;
+        return matchesSearch && matchesSkill && matchesLocation; //all three must be true for artisan to show
     });
 
-    displayArtisans(filtered);
+    displayArtisans(filtered); //displays the filtered list
 }
 
+//return matching artisans without displaying
 function filterCurrentArtisans() {
     return artisans.filter(artisan => {
         const searchTerm = searchInput.value.toLowerCase();
@@ -218,16 +223,19 @@ function filterCurrentArtisans() {
 
 // enables switching between tabs
 function switchTab(tabName) {
-    document.querySelectorAll('.tab').forEach(tab => {
+    //deselect all tab buttons
+    document.querySelectorAll('.tab').forEach(tab => { 
         tab.classList.remove('active');
     });
-    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-
+    //activate corresponding selected tab button
+    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active'); 
+    //hide all content areas
     document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.remove('active');
+        content.classList.remove('active'); 
     });
-    document.getElementById(tabName).classList.add('active');
-
+    //show the selected tab content
+    document.getElementById(tabName).classList.add('active'); 
+    //check if user clicked on favorites
     if (tabName === 'favorites') {
         displayFavorites();
     }
@@ -235,7 +243,7 @@ function switchTab(tabName) {
 
 // add artisan form submission
 async function handleFormSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(); //prevent page from reloading
     const formData = new FormData(artisanForm);
 
     const artisanData = {
@@ -246,52 +254,25 @@ async function handleFormSubmit(e) {
         email: formData.get('email'),
         experience: parseInt(formData.get('experience')),
         description: formData.get('description'),
-        upvotes: 0,
-        dateAdded: new Date().toISOString()
+        upvotes: 0, //new artisan starts with 0 upvotes
+        dateAdded: new Date().toISOString() //timestamp
     };
-
+    //send data to backend and update the frontend
     await addArtisan(artisanData);
 }
 
-//favorites
+//load favorites
 async function loadFavorites() {
     try {
+        //make GET request to backend at /favorites
         const res = await fetch('http://localhost:3000/favorites');
+
         if (!res.ok) throw new Error('Failed to load favorites');
+
         const data = await res.json();
-        favorites = data.map(f => f.artisanId);
+        favorites = data.map(f => f.artisanId); //holds artisanIds
     } catch (error) {
-        console.error('Error loading favorites:', error);
-    }
-}
-
-// favorite or unfavorite an artisan
-async function toggleFavorite(id) {
-    const isFav = favorites.includes(id);
-
-    if (isFav) {
-        const res = await fetch(`http://localhost:3000/favorites?artisanId=${id}`);
-        const favs = await res.json();
-        if (favs.length > 0) {
-            const favoriteId = favs[0].id;
-            await fetch(`http://localhost:3000/favorites/${favoriteId}`, {
-                method: 'DELETE'
-            });
-            favorites = favorites.filter(favId => favId !== id);
-        }
-    } else {
-        const res = await fetch('http://localhost:3000/favorites', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ artisanId: id })
-        });
-        const newFav = await res.json();
-        favorites.push(newFav.artisanId);
-    }
-
-    displayArtisans(filterCurrentArtisans());
-    if (document.getElementById('favorites').classList.contains('active')) {
-        displayFavorites();
+        console.error('Error loading favorites:', error); //runs incase of an error
     }
 }
 
@@ -336,11 +317,46 @@ function displayFavorites() {
     `).join('');
 }
 
+// favorite or unfavorite an artisan
+async function toggleFavorite(id) {
+    //check if artisan is already in favorites array
+    const isFav = favorites.includes(id);
+    //remove artisan from favorites
+    if (isFav) {
+        const res = await fetch(`http://localhost:3000/favorites?artisanId=${id}`);
+        const favs = await res.json();
 
+        if (favs.length > 0) {
+            const favoriteId = favs[0].id; //grab id of the favorite
+            await fetch(`http://localhost:3000/favorites/${favoriteId}`, {
+                method: 'DELETE' //remove favorite from backend
+            });
+
+            favorites = favorites.filter(favId => favId !== id);
+        }
+    } else {
+        //add artisan to favorites
+        const res = await fetch('http://localhost:3000/favorites', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ artisanId: id })
+        });
+        const newFav = await res.json();
+        favorites.push(newFav.artisanId);
+    }
+
+    displayArtisans(filterCurrentArtisans()); //update list of artisans
+    //refresh to reflect the change
+    if (document.getElementById('favorites').classList.contains('active')) {
+        displayFavorites();
+    }
+}
+
+//check if artisan is in the favorites array
 function isFavorited(id) {
     return favorites.includes(id);
 }
-
+//ensures function waits till user stops typing to run
 function debounce(func, delay) {
     let timeout;
     return function (...args) {
