@@ -17,7 +17,9 @@ JiraniSkills is a web application that allows users to connect with local artisa
 ## How to run this project
 ### 1. Clone the repository
 Clone the repository and navigate to the project directory
-
+```bash
+cd phase-1-project-jiraniSkills/
+```
 ### 2.Install json-server(if not already installed)
 ```bash
 npm install -g json-server
